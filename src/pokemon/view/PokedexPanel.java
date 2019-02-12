@@ -12,7 +12,7 @@ private PokedexController app;
 private SpringLayout appLayout;
 
 private JButton changeButton;
-private JComboBox pokedexDropdown;
+private JComboBox<String> pokedexDropdown;
 
 
 private JTextField numberField;
@@ -23,6 +23,7 @@ private JTextField enhancementField;
 private JTextField healthField;
 
 
+
 private JLabel numberLabel;
 private JLabel nameLabel;
 private JLabel evolveLabel;
@@ -30,6 +31,7 @@ private JLabel enhanceLabel;
 private JLabel healthLabel;
 private JLabel imageLabel;
 private JLabel attackLabel;
+
 
 public PokedexPanel(PokedexController app)
 {
@@ -51,15 +53,34 @@ public PokedexPanel(PokedexController app)
 	nameLabel = new JLabel("My name is");
 	imageLabel = new JLabel("pokemon goes here");
 	
+	changeButton = new JButton("Click here to change the Pokevalues.");
+	pokedexDropdown = new JComboBox<String>();	//stub
+	
 	setupPanel();
 	setupLayout();
 	setupListeners();
+	setupDropdown();
 	
 }
+
+private void setupDropdown()
+{
+	DefaultComboBoxModel<String> temp = new DefaultComboBoxModel<String>(app.buildPokedexText());
+	pokedexDropdown.setModel(temp);
+}
+
 
 private void setupPanel()
 
 {
+	this.setLayout(appLayout);
+	this.add(pokedexDropdown);
+	this.add(healthField);
+	this.add(numberField);
+	this.add(evolveField);
+	this.add(enhancementField);
+	this.add(attackField);
+	this.add(nameField);
 	
 }
 
@@ -72,5 +93,6 @@ private void setupListeners()
 {
 	
 }
+
 
 }
