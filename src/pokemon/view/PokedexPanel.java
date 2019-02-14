@@ -32,11 +32,15 @@ private JLabel healthLabel;
 private JLabel imageLabel;
 private JLabel attackLabel;
 
+private ImageIcon pokemonIcon;
+
 
 public PokedexPanel(PokedexController app)
 {
 	super();
 	this.app = app;
+	
+	this.pokemonIcon = new ImageIcon(getClass().getResource("/pokemon/view/images/Ultra Necrozma.png"));
 	
 	numberField = new JTextField("0");
 	nameField = new JTextField("My PokeName");
@@ -51,10 +55,11 @@ public PokedexPanel(PokedexController app)
 	attackLabel = new JLabel("This Pokemon attack level is");
 	enhanceLabel = new JLabel("This pokemone enhancement level is");
 	nameLabel = new JLabel("My name is");
-	imageLabel = new JLabel("pokemon goes here");
+	imageLabel = new JLabel("pokemon goes here", pokemonIcon);
 	
 	changeButton = new JButton("Click here to change the Pokevalues.");
 	pokedexDropdown = new JComboBox<String>();	//stub
+	
 	
 	setupPanel();
 	setupLayout();
@@ -74,6 +79,7 @@ private void setupPanel()
 
 {
 	this.setLayout(appLayout);
+	this.add(changeButton);
 	this.add(pokedexDropdown);
 	this.add(healthField);
 	this.add(numberField);
@@ -82,6 +88,13 @@ private void setupPanel()
 	this.add(attackField);
 	this.add(nameField);
 	
+	this.add(healthLabel);
+	this.add(numberLabel);
+	this.add(evolveLabel);
+	this.add(enhanceLabel);
+	this.add(attackLabel);
+	this.add(nameLabel);
+	this.add(imageLabel);
 }
 
 private void setupLayout()

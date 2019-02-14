@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import pokemon.view.PokedexFrame;
 import pokemon.model.*;
+import javax.swing.JOptionPane.*;
 
 public class PokedexController
 {
@@ -16,18 +17,32 @@ public class PokedexController
 	{
 		pokemonList = new ArrayList<Pokemon>();
 		addPokemon();
-		appFrame = new PokedexFrame(this);
+		appFrame = new PokedexFrame();
 	}
 	
 	private void addPokemon()
 	{
-		pokemonList.add(new Nerozma());
-		pokemonList.add(new Kyogre());
+		pokemonList.add(new Necrozma(0, null));
+		pokemonList.add(new Kyogre(0, null));
 	}
 	
 	public void start()
 	{
 		
+	}
+	
+	public boolean isInt(String text)
+	{
+		try
+		{
+			Integer.parseInt(text);
+			return true;
+		}
+		catch(NumberFormatException error)
+		{
+			JOptionPane.showInputDialog(appFrame, "You need to use double Type value.");
+		}
+		return false;
 	}
 	
 
